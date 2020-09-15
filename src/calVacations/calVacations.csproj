@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>palm_beach_travel_vacation_leisure_icon-icons.com_53586.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPPlus">
       <HintPath>..\..\..\frameWork_mew\Framework\bin\Debug\EPPlus.dll</HintPath>
@@ -203,6 +206,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lying-on-beach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="palm_beach_travel_vacation_leisure_icon-icons.com_53586.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

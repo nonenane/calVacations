@@ -373,7 +373,7 @@ namespace calVacations
             kadrInfo.countDay = dtData.DefaultView[dgvData.CurrentRow.Index]["StartCalculation"] == DBNull.Value ? 0 : (decimal)dtData.DefaultView[dgvData.CurrentRow.Index]["FirstVacationDays"];
             kadrInfo.nameDep = (string)dtData.DefaultView[dgvData.CurrentRow.Index]["nameDep"];
             if (dtData.Columns.Contains("personalPersonnelType"))
-                kadrInfo.personalPersonnelType = (int)dtData.DefaultView[dgvData.CurrentRow.Index]["personalPersonnelType"];
+                kadrInfo.personalPersonnelType = dtData.DefaultView[dgvData.CurrentRow.Index]["personalPersonnelType"]==DBNull.Value?0:(int)dtData.DefaultView[dgvData.CurrentRow.Index]["personalPersonnelType"];
 
 
             new frmInserDateStartCalculation().ShowDialog();

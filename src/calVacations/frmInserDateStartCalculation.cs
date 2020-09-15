@@ -150,7 +150,8 @@ namespace calVacations
                 if (!dtContenctVacation.Columns.Contains("dateEnd"))
                     dtContenctVacation.Columns.Add("dateEnd", typeof(DateTime));
 
-                if (dtHoliday != null && dtHoliday.Rows.Count > 0 && dtContenctVacation != null && dtContenctVacation.Rows.Count > 0)
+                //if (dtHoliday != null && dtHoliday.Rows.Count > 0 && dtContenctVacation != null && dtContenctVacation.Rows.Count > 0)
+                if (dtContenctVacation != null && dtContenctVacation.Rows.Count > 0)
                 {
                     foreach (DataRow row in dtContenctVacation.Rows)
                     {
@@ -538,7 +539,8 @@ namespace calVacations
             if (!dtData.Columns.Contains("dateEnd"))
                 dtData.Columns.Add("dateEnd", typeof(DateTime));
 
-            if (dtHoliday != null && dtHoliday.Rows.Count > 0 && dtData != null && dtData.Rows.Count > 0)
+            //if (dtHoliday != null && dtHoliday.Rows.Count > 0 && dtData != null && dtData.Rows.Count > 0)
+            if (dtData != null && dtData.Rows.Count > 0)
             {
                 foreach (DataRow row in dtData.Rows)
                 {
@@ -574,6 +576,11 @@ namespace calVacations
         private DateTime getEndDateVacation(DateTime _date_start, int _days)
         {
             DateTime _date_end = _date_start.AddDays(_days - 1);
+
+            if (dtHoliday == null || dtHoliday.Rows.Count == 0)
+            {
+                return _date_end;
+            }
 
             EnumerableRowCollection<DataRow> rowsHoliday = dtHoliday.AsEnumerable().Where(r => r.Field<int>("Status_Holiday") == 1
             && r.Field<DateTime>("Date_Holiday") >= _date_start && r.Field<DateTime>("Date_Holiday") <= _date_end);
