@@ -287,7 +287,7 @@ namespace calVacations
                 report.AddSingleValueObject(row["nameDep"], indexRow, 1);
                 report.AddSingleValueObject(row["namePost"], indexRow, 2);
                 report.AddSingleValueObject(row["FIO"], indexRow, 3);
-                report.AddSingleValueObject(((DateTime)row["dateEmploy"]).ToShortDateString(), indexRow, 4);
+                report.AddSingleValueObject(row["dateEmploy"] == DBNull.Value ? "" : ((DateTime)row["dateEmploy"]).ToShortDateString(), indexRow, 4);
                 if (chbUnemploy.Checked)
                 {
                     if (row["dateUnemploy"] != DBNull.Value)
