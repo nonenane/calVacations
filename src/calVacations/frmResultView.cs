@@ -114,6 +114,14 @@ namespace calVacations
                 DateTime tmpValidDate = _date_start.Date;
                 int cntDay = 0;
 
+                EnumerableRowCollection<DataRow> rowCollection = dtData.AsEnumerable().Where(r => r.Field<DateTime>("date").Date == tmpValidDate.AddDays(1 - tmpValidDate.Day).Date);
+
+                if (rowCollection.Count() > 0)
+                    rowCollection.First()["cntDay"] = _days;
+
+                /*
+                continue;
+
                 while (true)
                 {
                     if (tmpDate.Date > _date_end.Date)
@@ -145,7 +153,7 @@ namespace calVacations
                     if (rowCollection.Count() > 0)
                         rowCollection.First()["cntDay"] = cntDay;
                     //dtTmp.Rows.Add(tmpValidDate.AddDays(1 - tmpValidDate.Day), cntDay);                    
-                }
+                }*/
             }
 
             if (dtDateAbsenceMonthSort != null && dtDateAbsenceMonthSort.Rows.Count > 0)

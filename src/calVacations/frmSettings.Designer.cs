@@ -122,11 +122,6 @@
             0,
             0,
             0});
-            this.nudkdps.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nudkdps.Name = "nudkdps";
             this.nudkdps.Size = new System.Drawing.Size(55, 20);
             this.nudkdps.TabIndex = 22;

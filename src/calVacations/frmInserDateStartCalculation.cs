@@ -346,6 +346,23 @@ namespace calVacations
                     dtDateAbsence_new.AcceptChanges();
                 }
 
+                //Уборка выходных с учётом разницы 1 дня
+                if (dtDateAbsence_new.Rows.Count > 0)
+                {
+                    while (true)
+                    {
+                        rowFindCollection = dtDateAbsence_new.AsEnumerable()
+                            .Where(r => DayOfWeek.Saturday.Equals(r.Field<DateTime>("DataStartAbsence").DayOfWeek) && DayOfWeek.Sunday.Equals(r.Field<DateTime>("DataStopAbsence").DayOfWeek) && (r.Field<DateTime>("DataStopAbsence").Date - r.Field<DateTime>("DataStartAbsence").Date).Days == 1);
+                        if (rowFindCollection.Count() == 0) break;
+
+                        rowFindCollection.First().Delete();
+
+                    }
+                }
+
+
+
+
                 if (dtDateAbsence_new.Rows.Count > 0)
                 {
                     if (DialogResult.Cancel == new frmCorrectionKadDate() { dtDateAbsence_new = dtDateAbsence_new }.ShowDialog())
